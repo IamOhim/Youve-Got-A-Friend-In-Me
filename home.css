@@ -1,0 +1,65 @@
+body{
+    padding: 0;
+}
+header{
+    background-color: grey;
+    border-radius: 40px 40px 0px 0px;
+}
+#playlisttext{
+    text-align: center;
+    
+    color: antiquewhite;
+    
+    padding: 40px 0px 40px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 500%;
+    text-shadow: 5px 5px 5px rgb(36, 35, 35);
+    margin: 0%;
+}
+#background{
+    background-color: grey;
+    margin: 0%;
+}
+/*tag div list playlist*/
+#poster{
+    background-color: darkgrey;
+    margin-bottom: 1%;
+    border-radius: 40px;
+}
+/*tag tabel*/
+#tabel_poster{
+    padding: 1%;
+}
+/*tag td pada gambar poster*/
+.cellposter{
+    padding: 1% 1% 0 1%;
+}
+/*tag td pada text poster*/
+.cellpostertext{
+    text-align: center;
+}
+/*img poster*/
+.poster{
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a :hover{
+    width: 100%;
+}
+footer{
+    padding: 1%;
+    background-color: grey;
+    margin-top: -1%;
+    border-radius:  0px 0px 40px 40px;
+}
+table , td{
+    border: 5px solid;
+    padding: 0;
+}

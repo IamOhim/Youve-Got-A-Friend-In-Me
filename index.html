@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You've Got A Friend In Me</title>
+    <link rel="shortcut icon" href="../logo.png">
+    <style>
+        body{
+            background-color: #8b5a2b;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+        .poster1 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        .lagu1 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img{
+            border-radius: 10px;
+        }
+        h2, h4, p{
+            color: aliceblue;
+        }
+        .cont{
+            height: 20vh;
+            width: 60%;
+            border: 1px double white;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            text-align: center;
+        }
+        audio {
+            height: 50px;
+            margin: 10px 0;
+            padding: 5px;
+            background-color: transparent;
+            
+            border-radius: 10px;
+            
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        audio::-webkit-media-controls-panel {
+            border-radius: 10px;
+        }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-volume-slider,
+        audio::-webkit-media-controls-timeline {
+            filter: none;
+        }
+        .lirik {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: transform 0.5s;
+            padding: 5px;
+            margin-top: 32px;
+            
+        }
+        .lyric_line {
+            font-size: 20px;
+            transition: color 0.5s;
+            margin: 16px;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: white;
+        }
+        .highlight {
+            -webkit-text-fill-color: white;
+            transform: scale(1.1);
+            transition: 2s transform ease;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+    <img src="image/youve_got_a_friend_in_me.jpg" width="200" height="300" class="poster1">
+    <h2 style="text-align: center;">You've Got A Friend In Me</h2>
+    <audio controls id="audio" class="lagu1">
+        <source src="songs/youve_got_a_friend_in_me.mp3" type="audio/mpeg">
+        Not Support Audio
+    </audio>
+    <h4 style="text-align: center;">Lyric : </h4>
+    <div class="cont">
+        <div class="lirik"></div>
+    </div>
+
+    <script>
+        const cont = document.querySelector('.cont');
+        const content = document.querySelector('.lirik');
+        const audioPlayer = document.getElementById('audio')
+        const lyrics =[
+        { time: 0, line:" ♪ ♪ ♪ "},
+        { time: 10, line:" You've got a friend in me" },
+        { time: 15, line:" You've got a friend in me" },
+        { time: 19, line:" When the road looks rough ahead" },
+        { time: 22, line:" And you're miles and miles" },
+        { time: 24, line:" From your nice warm bed" },
+        { time: 27, line:" You just remember what your old pal said" },
+        { time: 30, line:" Boy, You've got a friend in me" },
+        { time: 35, line:" Yeah, You've got a friend in me" },
+        { time: 38, line:" ♪ ♪ ♪ "},
+        { time: 44, line:" You've got a friend in me" },
+        { time: 48, line:" You've got a friend in me" },
+        { time: 52, line:" If You've got troubles, I've got 'em too" },
+        { time: 56, line:" There isn't anything I wouldn't do for you" },
+        { time: 60, line:" We stick together and can see it through" },
+        { time: 63, line:" Cause You've got a friend in me" },
+        { time: 69, line:" You've got a friend in me" },
+        { time: 73, line:" Some other folks might be" },
+        { time: 75, line:" A little bit smarter than I am" },
+        { time: 78, line:" Bigger and stronger too" },
+        { time: 80, line:" Maybe" },
+        { time: 82, line:" But none of them will ever love you" },
+        { time: 85, line:" The way I do, it's me and you" },
+        { time: 88, line:" Boy, and as the years go by" },
+        { time: 93, line:" Our friendship will never diee" },
+        { time: 97, line:" You're gonna see it's our destiny" },
+        { time: 102, line:" You've got a friend in me" },
+        { time: 107, line:" You've got a friend in me" },
+        { time: 111, line:" You've got a friend in me" },
+        { time: 116, line:" ♪ ♪ ♪ "}
+        ]
+
+        let currentIndex = 0;
+        let i = 0;
+
+        function createElement(text) {
+            const line = document.createElement('div');
+            line.textContent = text;
+            line.classList.add('lyric_line');
+            content.appendChild(line);
+        }
+
+        lyrics.forEach(lyric => createElement(lyric.line));
+
+        function updateLyrics() {
+            const lines = document.querySelectorAll('.lyric_line');
+            const currentTime = audioPlayer.currentTime;
+
+            while (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
+                if (currentIndex > 0) {
+                    lines[currentIndex - 1].classList.remove('highlight');
+                }
+                lines[currentIndex].classList.add('highlight');
+                content.style.transform = `translateY(-${currentIndex + 1.1 * i}cm)`;
+                currentIndex++;
+                i += 0.03;
+            }
+        }
+
+        audioPlayer.addEventListener('timeupdate', updateLyrics);
+    </script>
+</body>
+</html>
